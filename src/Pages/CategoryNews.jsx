@@ -9,7 +9,7 @@ const CategoryNews = () => {
 
     return (
         <div>
-         <h2 className='font-semibold mb-2 text-center'>Daily News</h2>
+         <h2 className='font-semibold text-xl mb-2 text-center'>Daily News</h2>
 
          <div>
             {

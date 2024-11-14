@@ -11,7 +11,7 @@ const Home = () => {
 
         <div className='font-poppins'>
 
-            <header>
+            <header className="sticky top-0 bg-white z-20 shadow-md">
                 <Header></Header>
 
                 <section className='w-11/12 mx-auto'>

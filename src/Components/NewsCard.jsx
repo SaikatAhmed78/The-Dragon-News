@@ -39,7 +39,7 @@ const NewsCard = ({ singleNews }) => {
                     Read More
                 </a>
             </div>
-
+                <hr />
             <div className="flex items-center justify-between mt-4 px-6">
                 <div className="flex items-center">
                     <span className="text-yellow-400 text-lg">
