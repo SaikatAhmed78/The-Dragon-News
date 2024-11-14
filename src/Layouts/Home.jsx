@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import Header from '../Components/Header';
 import LatestNews from '../Components/LatestNews';
 import LeftAside from '../Components/layout Components/LeftAside';
@@ -9,24 +10,31 @@ const Home = () => {
     return (
 
         <div className='font-poppins'>
-            
-           <header>
-           <Header></Header>
 
-           <section className='w-11/12 mx-auto'>
-            <LatestNews></LatestNews>
-           </section>
-           </header>
+            <header>
+                <Header></Header>
 
-           <nav className='w-11/12 mx-auto mt-5'>
-           <Navbar></Navbar>
-           </nav>
+                <section className='w-11/12 mx-auto'>
+                    <LatestNews></LatestNews>
+                </section>
+            </header>
+
+            <nav className='w-11/12 mx-auto mt-5'>
+                <Navbar></Navbar>
+            </nav>
 
             <main className='w-11/12 mx-auto mt-8 grid md:grid-cols-12'>
 
                 <aside className='col-span-3'><LeftAside></LeftAside></aside>
-                <section className='col-span-6'>Main Content</section>
+
+                <section className='col-span-6'>
+                    <h2 className='font-semibold'>Daily News</h2>
+                    <Outlet></Outlet>
+                </section>
+
                 <aside className='col-span-3'><RightAside></RightAside></aside>
+
+
             </main>
         </div>
     );

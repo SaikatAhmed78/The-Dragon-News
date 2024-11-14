@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const LeftAside = () => {
@@ -17,10 +17,10 @@ const LeftAside = () => {
         {categories.map(category => (
           <NavLink
             key={category.category_id}
-            to={`/${category.category_id}`}
+            to={`/category/${category.category_id}`}
             className={({ isActive }) =>
               `btn px-4 py-2 rounded ${
-                isActive ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-700"
+                isActive ? "bg-blue-500 hover:bg-blue-700  text-white" : "bg-gray-200 text-gray-700"
               }`
             }
           >
