@@ -28,7 +28,6 @@ const Home = () => {
                 <aside className='col-span-3'><LeftAside></LeftAside></aside>
 
                 <section className='col-span-6'>
-                    <h2 className='font-semibold'>Daily News</h2>
                     <Outlet></Outlet>
                 </section>
 
