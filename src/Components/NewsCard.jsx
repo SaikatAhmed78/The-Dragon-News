@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaBookmark, FaShareAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const NewsCard = ({ singleNews }) => {
     const { title, details, author, image_url, rating, total_view } = singleNews;
@@ -32,12 +33,14 @@ const NewsCard = ({ singleNews }) => {
                 <p className="text-gray-700 text-base">
                     {details.slice(0, 100)}...
                 </p>
-                <a
-                    href="#"
+
+                <Link to={`/news/${singleNews._id}`}
+                    
                     className="text-indigo-600 hover:text-indigo-900 text-sm font-semibold mt-2 inline-block"
                 >
                     Read More
-                </a>
+                </Link>
+
             </div>
                 <hr />
             <div className="flex items-center justify-between mt-4 px-6">

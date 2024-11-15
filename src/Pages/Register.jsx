@@ -62,7 +62,7 @@ const Register = () => {
       Already Have An Account ? Please <NavLink className="text-blue-600" to="/auth/login">Login</NavLink>
       </p>
     </div>
-
+    
     </div>
     );
 };

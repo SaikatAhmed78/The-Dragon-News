@@ -1,12 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
+
+  const {userLogin, setUser} =useContext(AuthContext)
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password)
+
+    userLogin(email, password)
+    .then(res => {
+      console.log(res.user)
+      setUser(res.user)
+    })
+    .catch(error => {
+      alert(error.code)
+    })
+  }
+
     return (
       <div className='min-h-screen flex justify-center items-center'>
           <div className="card bg-base-100 w-full max-w-lg shrink-0 rounded-none p-10">
           <h1 className="text-2xl font-bold text-center">Login Your Account</h1>
-        <form className="card-body">
+        <form onSubmit={handleSubmit} className="card-body">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
