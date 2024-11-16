@@ -1,27 +1,40 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Register = () => {
 
-    const {creatNewUser, setUser} = useContext(AuthContext);
+    const {creatNewUser, setUser, updatedUserProfile} = useContext(AuthContext);
+
+    const [error, setError] = useState({});
+    const navigate = useNavigate();
 
     const handleSubmit = e => {
         e.preventDefault()
         const name  = e.target.name.value;
+        if(name.length < 5) {
+          setError({...error , name: "Must Be More Then 5 Character Long"})
+          return ;
+        }
         const photo  = e.target.photoUrl.value;
         const email  = e.target.email.value;
         const password  = e.target.password.value;
-        console.log(name, photo, email, password)
+        
 
         creatNewUser(email, password)
         .then(result => {
             const user = result.user
             setUser(user)
+
+            updatedUserProfile({displayName: name, photoURL: photo})
+            .then(()=>{
+              navigate('/')
+            })
+            // .catch(error => console.log(error))
             
         })
         .catch(error => {
-            console.log(error.message)
+            // console.log(error.message)
         })
     }
 
@@ -36,6 +49,13 @@ const Register = () => {
           </label>
           <input type="text" name='name' placeholder="Enter your Name" className="input input-bordered" required />
         </div>
+        {
+          error.name && (
+            <label className="label text-xs text-red-600">
+              {error.name}
+          </label>
+          )
+        }
         <div className="form-control">
           <label className="label">
             <span className="label-text">Photo URL</span>
